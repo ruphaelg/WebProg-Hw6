@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Amicable Numbers</title>
+    <style type="text/css">
+        body {
+        background-color: #8E8E8C;
+        }
+        form{
+            font-weight: bold;
+            text-align: center;
+        }
+        div{
+             text-align: left;
+             font-weight: bold;
+             
+        }
+        h1{
+            text-align: center;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Amicable Numbers</h1>
+
+<form onsubmit="amicable()" method="post">
+    <label class="" for="number1"> Choose a number: </label>
+    <input type="text" id="number1" name="number1"> 
+    <label class="" for="number2"> Choose another number: </label>
+    <input type="text" id="number2" name="number2"> 
+    <button onclick="amicable()" type="button" id="submit_button" > Submit </button>
+</form>
+
+
+<div id="result"> Results:</div>
+<div id="factors"> Factors: <br> </div>
+
+<script language = "javascript">
+function amicable() {
+    
+  // Get the value of the input field with id="numb"
+  let x = document.getElementById("number1").value;
+  let y = document.getElementById("number2").value;
+   
+   
+  // If x is Not a Number or less than one or greater than 10
+  let text;
+ 
+       var arrayX = new Array();
+       var arrayY = new Array();
+       
+      for (var i = 0; i < x-1; i++) {
+          if (isAfactor(i,x)){
+              lengthx = arrayX.push(i);
+          }
+      }
+      for (var i = 0; i < y-1; i++) {
+          if (isAfactor(i,y)){
+              lengthy = arrayY.push(i);
+              
+          }
+      }
+    document.getElementById("factors").innerHTML += "Factor of " + x + ": ";
+    var sumx = sum(arrayX, lengthx);
+
+    document.getElementById("factors").innerHTML += "<br> Factor of " + y + ": ";
+    var sumy = sum(arrayY, lengthy);
+    
+    
+      if (sumx == y && sumy == x){
+          
+          text = "The numbers: " + x + " and " + y + " are amicable"
+      }
+      else {
+          text = "The numbers: " + x + " and " + y + " are not amicable"
+      }
+    
+  document.getElementById("result").innerHTML = text;
+} 
+  
+function sum(array, length){
+    var sum = 0;
+    for (var i = 0; i < length; i++) {
+        document.getElementById("factors").innerHTML += array[i] + " ";
+        sum = array[i] + sum;
+    }
+    return sum;
+}     
+  
+  
+  
+  
+  
+ function isAfactor(factor, number){
+     if (number % factor === 0) {
+         return true;
+     }
+     else {
+         return false;
+     }
+ }
+ 
+</script>
+
+</body>
+</html>
